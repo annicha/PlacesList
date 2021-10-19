@@ -7,7 +7,8 @@
 
 import CoreLocation
 
-enum PlacesLocationError: String, Error {
+/// Error message for CoreLocation related errors. Use .rawValue to get error message.
+enum PLLocationError: String, Error {
 	case deniedPermission 	= "Location permission was denied. Please go to your setting to change permission."
 	case notSupported		= "This device does not support significant location change monitoring."
 	case unknown			= "Sorry, an unknown error occured while checking location. Please try again later or contact support."
@@ -21,17 +22,17 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 	private override init() {}
 	
 	var locationManager = CLLocationManager()
-	var locationUpdateHandler: ((Result<CLLocation, PlacesLocationError>) -> Void)?
+	var locationUpdateHandler: ((Result<CLLocation, PLLocationError>) -> Void)?
 
-	func startMonitoringSignificantLocationChanges(_ completion: @escaping (Result<CLLocation, PlacesLocationError>) -> Void) {
+	func startMonitoringSignificantLocationChanges(_ completion: @escaping (Result<CLLocation, PLLocationError>) -> Void) {
 		if !CLLocationManager.significantLocationChangeMonitoringAvailable() {
-			completion(.failure(PlacesLocationError.notSupported)); return
+			completion(.failure(PLLocationError.notSupported)); return
 		}
 		
 		locationManager.requestWhenInUseAuthorization()
 		
 		guard locationManager.authorizationStatus != .denied else {
-			completion(.failure(PlacesLocationError.deniedPermission)); return
+			completion(.failure(PLLocationError.deniedPermission)); return
 		}
 
 		locationManager.delegate = self
@@ -55,18 +56,18 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 			
 			switch error.code {
 			case .locationUnknown:
-				locationUpdateHandler?(.failure(PlacesLocationError.locationUnknown))
+				locationUpdateHandler?(.failure(PLLocationError.locationUnknown))
 			case .network:
-				locationUpdateHandler?(.failure(PlacesLocationError.network))
+				locationUpdateHandler?(.failure(PLLocationError.network))
 			default:
 				// other CLError occured but not handled
 				print("\n🍰 Error = \(error.localizedDescription)")
-				locationUpdateHandler?(.failure(PlacesLocationError.unknown))
+				locationUpdateHandler?(.failure(PLLocationError.unknown))
 			}
 			return
 		}
 		
 		print("\n🙇🏻‍♀️ Error = \(error.localizedDescription)")
-		locationUpdateHandler?(.failure(PlacesLocationError.unknown))
+		locationUpdateHandler?(.failure(PLLocationError.unknown))
 	}
 }
