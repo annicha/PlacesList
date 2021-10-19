@@ -1,0 +1,603 @@
+{
+	"meta": {
+		"code": 200,
+		"requestId": "616ecaaf0b91d930bc082aa6"
+	},
+	"response": {
+		"suggestedFilters": {
+			"header": "Tap to show:",
+			"filters": [
+				{
+					"name": "Open now",
+					"key": "openNow"
+				}
+			]
+		},
+		"suggestedRadius": 939,
+		"headerLocation": "Hat Yai",
+		"headerFullLocation": "Hat Yai",
+		"headerLocationGranularity": "city",
+		"totalResults": 126,
+		"suggestedBounds": {
+			"ne": {
+				"lat": 7.014717102605677,
+				"lng": 100.4882431145896
+			},
+			"sw": {
+				"lat": 7.008627415851417,
+				"lng": 100.48097852531565
+			}
+		},
+		"groups": [
+			{
+				"type": "Recommended Places",
+				"name": "recommended",
+				"items": [
+					{
+						"reasons": {
+							"count": 0,
+							"items": [
+								{
+									"summary": "This spot is popular",
+									"type": "general",
+									"reasonName": "globalInteractionReason"
+								}
+							]
+						},
+						"venue": {
+							"id": "5623ba2d498e8dfc39741d2c",
+							"name": "The Cottage (เดอะ คอทเทช)",
+							"location": {
+								"lat": 7.0133440473220166,
+								"lng": 100.48534136834827,
+								"labeledLatLngs": [
+									{
+										"label": "display",
+										"lat": 7.0133440473220166,
+										"lng": 100.48534136834827
+									}
+								],
+								"distance": 255,
+								"cc": "TH",
+								"city": "หาดใหญ่",
+								"state": "สงขลา",
+								"country": "ประเทศไทย",
+								"formattedAddress": [
+									"หาดใหญ่",
+									"สงขลา",
+									"ประเทศไทย"
+								]
+							},
+							"categories": [
+								{
+									"id": "4bf58dd8d48988d117941735",
+									"name": "Beer Garden",
+									"pluralName": "Beer Gardens",
+									"shortName": "Beer Garden",
+									"icon": {
+										"prefix": "https://ss3.4sqi.net/img/categories_v2/nightlife/beergarden_",
+										"suffix": ".png"
+									},
+									"primary": true
+								}
+							],
+							"photos": {
+								"count": 0,
+								"groups": []
+							}
+						},
+						"referralId": "e-0-5623ba2d498e8dfc39741d2c-0"
+					},
+					{
+						"reasons": {
+							"count": 0,
+							"items": [
+								{
+									"summary": "This spot is popular",
+									"type": "general",
+									"reasonName": "globalInteractionReason"
+								}
+							]
+						},
+						"venue": {
+							"id": "55a4d2f6498eb4ced7f69ae0",
+							"name": "Dham-má-daa (ธัม-มะ-ดา)",
+							"location": {
+								"address": "Klongrien 1 Rd",
+								"lat": 7.010447570289684,
+								"lng": 100.48546552215895,
+								"labeledLatLngs": [
+									{
+										"label": "display",
+										"lat": 7.010447570289684,
+										"lng": 100.48546552215895
+									}
+								],
+								"distance": 69,
+								"postalCode": "90110",
+								"cc": "TH",
+								"city": "หาดใหญ่",
+								"state": "สงขลา",
+								"country": "ประเทศไทย",
+								"formattedAddress": [
+									"Klongrien 1 Rd",
+									"หาดใหญ่",
+									"สงขลา 90110",
+									"ประเทศไทย"
+								]
+							},
+							"categories": [
+								{
+									"id": "4bf58dd8d48988d1e0931735",
+									"name": "Coffee Shop",
+									"pluralName": "Coffee Shops",
+									"shortName": "Coffee Shop",
+									"icon": {
+										"prefix": "https://ss3.4sqi.net/img/categories_v2/food/coffeeshop_",
+										"suffix": ".png"
+									},
+									"primary": true
+								}
+							],
+							"photos": {
+								"count": 0,
+								"groups": []
+							}
+						},
+						"referralId": "e-0-55a4d2f6498eb4ced7f69ae0-1"
+					},
+					{
+						"reasons": {
+							"count": 0,
+							"items": [
+								{
+									"summary": "This spot is popular",
+									"type": "general",
+									"reasonName": "globalInteractionReason"
+								}
+							]
+						},
+						"venue": {
+							"id": "4ccc0f347c2ff04dc857967e",
+							"name": "นัดพบยูงทอง",
+							"location": {
+								"address": "Soi 6, Rajyindee Rd",
+								"lat": 7.0093856,
+								"lng": 100.48471,
+								"labeledLatLngs": [
+									{
+										"label": "display",
+										"lat": 7.0093856,
+										"lng": 100.48471
+									}
+								],
+								"distance": 196,
+								"postalCode": "90110",
+								"cc": "TH",
+								"state": "Chang Wat Songkhla",
+								"country": "ประเทศไทย",
+								"formattedAddress": [
+									"Soi 6, Rajyindee Rd",
+									"Chang Wat Songkhla 90110",
+									"ประเทศไทย"
+								]
+							},
+							"categories": [
+								{
+									"id": "4bf58dd8d48988d149941735",
+									"name": "Thai Restaurant",
+									"pluralName": "Thai Restaurants",
+									"shortName": "Thai",
+									"icon": {
+										"prefix": "https://ss3.4sqi.net/img/categories_v2/food/thai_",
+										"suffix": ".png"
+									},
+									"primary": true
+								}
+							],
+							"photos": {
+								"count": 0,
+								"groups": []
+							}
+						},
+						"referralId": "e-0-4ccc0f347c2ff04dc857967e-2"
+					},
+					{
+						"reasons": {
+							"count": 0,
+							"items": [
+								{
+									"summary": "This spot is popular",
+									"type": "general",
+									"reasonName": "globalInteractionReason"
+								}
+							]
+						},
+						"venue": {
+							"id": "4df499f045dd4e2693448ea0",
+							"name": "Chong Khao Seafoods (ช่องเขาซีฟู้ดส์)",
+							"location": {
+								"lat": 7.008993927688966,
+								"lng": 100.48610753332194,
+								"labeledLatLngs": [
+									{
+										"label": "display",
+										"lat": 7.008993927688966,
+										"lng": 100.48610753332194
+									}
+								],
+								"distance": 245,
+								"cc": "TH",
+								"city": "หาดใหญ่",
+								"state": "สงขลา",
+								"country": "ประเทศไทย",
+								"formattedAddress": [
+									"หาดใหญ่",
+									"สงขลา",
+									"ประเทศไทย"
+								]
+							},
+							"categories": [
+								{
+									"id": "4bf58dd8d48988d1ce941735",
+									"name": "Seafood Restaurant",
+									"pluralName": "Seafood Restaurants",
+									"shortName": "Seafood",
+									"icon": {
+										"prefix": "https://ss3.4sqi.net/img/categories_v2/food/seafood_",
+										"suffix": ".png"
+									},
+									"primary": true
+								}
+							],
+							"photos": {
+								"count": 0,
+								"groups": []
+							}
+						},
+						"referralId": "e-0-4df499f045dd4e2693448ea0-3"
+					},
+					{
+						"reasons": {
+							"count": 0,
+							"items": [
+								{
+									"summary": "This spot is popular",
+									"type": "general",
+									"reasonName": "globalInteractionReason"
+								}
+							]
+						},
+						"venue": {
+							"id": "5c493530d4cc98002cd63d6a",
+							"name": "POINT coffee space",
+							"location": {
+								"address": "89 ซอยนุ่มอุทิศ",
+								"crossStreet": "ซอยประชายินดี 2",
+								"lat": 7.011334,
+								"lng": 100.486263,
+								"labeledLatLngs": [
+									{
+										"label": "display",
+										"lat": 7.011334,
+										"lng": 100.486263
+									}
+								],
+								"distance": 109,
+								"postalCode": "90110",
+								"cc": "TH",
+								"city": "หาดใหญ่",
+								"state": "สงขลา",
+								"country": "ประเทศไทย",
+								"formattedAddress": [
+									"89 ซอยนุ่มอุทิศ (ซอยประชายินดี 2)",
+									"หาดใหญ่",
+									"สงขลา 90110",
+									"ประเทศไทย"
+								]
+							},
+							"categories": [
+								{
+									"id": "4bf58dd8d48988d1e0931735",
+									"name": "Coffee Shop",
+									"pluralName": "Coffee Shops",
+									"shortName": "Coffee Shop",
+									"icon": {
+										"prefix": "https://ss3.4sqi.net/img/categories_v2/food/coffeeshop_",
+										"suffix": ".png"
+									},
+									"primary": true
+								}
+							],
+							"photos": {
+								"count": 0,
+								"groups": []
+							}
+						},
+						"referralId": "e-0-5c493530d4cc98002cd63d6a-4"
+					},
+					{
+						"reasons": {
+							"count": 0,
+							"items": [
+								{
+									"summary": "This spot is popular",
+									"type": "general",
+									"reasonName": "globalInteractionReason"
+								}
+							]
+						},
+						"venue": {
+							"id": "500a28e1e4b0938452c8f5f9",
+							"name": "imhouse Coffee & Cake",
+							"location": {
+								"lat": 7.013958485827965,
+								"lng": 100.48791290598624,
+								"labeledLatLngs": [
+									{
+										"label": "display",
+										"lat": 7.013958485827965,
+										"lng": 100.48791290598624
+									}
+								],
+								"distance": 432,
+								"cc": "TH",
+								"city": "หาดใหญ่",
+								"state": "สงขลา",
+								"country": "ประเทศไทย",
+								"formattedAddress": [
+									"หาดใหญ่",
+									"สงขลา",
+									"ประเทศไทย"
+								]
+							},
+							"categories": [
+								{
+									"id": "4bf58dd8d48988d1e0931735",
+									"name": "Coffee Shop",
+									"pluralName": "Coffee Shops",
+									"shortName": "Coffee Shop",
+									"icon": {
+										"prefix": "https://ss3.4sqi.net/img/categories_v2/food/coffeeshop_",
+										"suffix": ".png"
+									},
+									"primary": true
+								}
+							],
+							"photos": {
+								"count": 0,
+								"groups": []
+							}
+						},
+						"referralId": "e-0-500a28e1e4b0938452c8f5f9-5"
+					},
+					{
+						"reasons": {
+							"count": 0,
+							"items": [
+								{
+									"summary": "This spot is popular",
+									"type": "general",
+									"reasonName": "globalInteractionReason"
+								}
+							]
+						},
+						"venue": {
+							"id": "4cbc8ae1d78f468814d0c873",
+							"name": "7-Eleven (เซเว่น อีเลฟเว่น)",
+							"location": {
+								"address": "ช่องเขา",
+								"lat": 7.0089042197947915,
+								"lng": 100.48323529377706,
+								"labeledLatLngs": [
+									{
+										"label": "display",
+										"lat": 7.0089042197947915,
+										"lng": 100.48323529377706
+									}
+								],
+								"distance": 331,
+								"postalCode": "90110",
+								"cc": "TH",
+								"city": "หาดใหญ่",
+								"state": "สงขลา",
+								"country": "ประเทศไทย",
+								"formattedAddress": [
+									"ช่องเขา",
+									"หาดใหญ่",
+									"สงขลา 90110",
+									"ประเทศไทย"
+								]
+							},
+							"categories": [
+								{
+									"id": "4d954b0ea243a5684a65b473",
+									"name": "Convenience Store",
+									"pluralName": "Convenience Stores",
+									"shortName": "Convenience Store",
+									"icon": {
+										"prefix": "https://ss3.4sqi.net/img/categories_v2/shops/conveniencestore_",
+										"suffix": ".png"
+									},
+									"primary": true
+								}
+							],
+							"photos": {
+								"count": 0,
+								"groups": []
+							}
+						},
+						"referralId": "e-0-4cbc8ae1d78f468814d0c873-6"
+					},
+					{
+						"reasons": {
+							"count": 0,
+							"items": [
+								{
+									"summary": "This spot is popular",
+									"type": "general",
+									"reasonName": "globalInteractionReason"
+								}
+							]
+						},
+						"venue": {
+							"id": "4d286c54467d6ea87b0dc695",
+							"name": "อาอี๋ เนื้อย่างเกาหลี",
+							"location": {
+								"address": "Rat Yindi Rd",
+								"lat": 7.012285747873367,
+								"lng": 100.4819355840079,
+								"labeledLatLngs": [
+									{
+										"label": "display",
+										"lat": 7.012285747873367,
+										"lng": 100.4819355840079
+									}
+								],
+								"distance": 397,
+								"postalCode": "90110",
+								"cc": "TH",
+								"city": "หาดใหญ่",
+								"state": "สงขลา",
+								"country": "ประเทศไทย",
+								"formattedAddress": [
+									"Rat Yindi Rd",
+									"หาดใหญ่",
+									"สงขลา 90110",
+									"ประเทศไทย"
+								]
+							},
+							"categories": [
+								{
+									"id": "4bf58dd8d48988d1df931735",
+									"name": "BBQ Joint",
+									"pluralName": "BBQ Joints",
+									"shortName": "BBQ",
+									"icon": {
+										"prefix": "https://ss3.4sqi.net/img/categories_v2/food/bbqalt_",
+										"suffix": ".png"
+									},
+									"primary": true
+								}
+							],
+							"photos": {
+								"count": 0,
+								"groups": []
+							}
+						},
+						"referralId": "e-0-4d286c54467d6ea87b0dc695-7"
+					},
+					{
+						"reasons": {
+							"count": 0,
+							"items": [
+								{
+									"summary": "This spot is popular",
+									"type": "general",
+									"reasonName": "globalInteractionReason"
+								}
+							]
+						},
+						"venue": {
+							"id": "50c8682de4b09030576cc9ab",
+							"name": "WINNING STADIUM",
+							"location": {
+								"lat": 7.014440298662302,
+								"lng": 100.48130873391901,
+								"labeledLatLngs": [
+									{
+										"label": "display",
+										"lat": 7.014440298662302,
+										"lng": 100.48130873391901
+									}
+								],
+								"distance": 581,
+								"cc": "TH",
+								"country": "ประเทศไทย",
+								"formattedAddress": [
+									"ประเทศไทย"
+								]
+							},
+							"categories": [
+								{
+									"id": "4cce455aebf7b749d5e191f5",
+									"name": "Soccer Field",
+									"pluralName": "Soccer Fields",
+									"shortName": "Soccer Field",
+									"icon": {
+										"prefix": "https://ss3.4sqi.net/img/categories_v2/arts_entertainment/stadium_soccer_",
+										"suffix": ".png"
+									},
+									"primary": true
+								}
+							],
+							"photos": {
+								"count": 0,
+								"groups": []
+							}
+						},
+						"referralId": "e-0-50c8682de4b09030576cc9ab-8"
+					},
+					{
+						"reasons": {
+							"count": 0,
+							"items": [
+								{
+									"summary": "This spot is popular",
+									"type": "general",
+									"reasonName": "globalInteractionReason"
+								}
+							]
+						},
+						"venue": {
+							"id": "4cdbf4f5cea2224b336c884c",
+							"name": "CHE HUANG RESTAURANT (ผัดไทยกุ้งสดเจ๊ฮวง)",
+							"location": {
+								"address": "Soi Noom Utit",
+								"lat": 7.00989433808203,
+								"lng": 100.48623734428725,
+								"labeledLatLngs": [
+									{
+										"label": "display",
+										"lat": 7.00989433808203,
+										"lng": 100.48623734428725
+									}
+								],
+								"distance": 164,
+								"postalCode": "90110",
+								"cc": "TH",
+								"city": "หาดใหญ่",
+								"state": "สงขลา",
+								"country": "ประเทศไทย",
+								"formattedAddress": [
+									"Soi Noom Utit",
+									"หาดใหญ่",
+									"สงขลา 90110",
+									"ประเทศไทย"
+								]
+							},
+							"categories": [
+								{
+									"id": "4bf58dd8d48988d145941735",
+									"name": "Chinese Restaurant",
+									"pluralName": "Chinese Restaurants",
+									"shortName": "Chinese",
+									"icon": {
+										"prefix": "https://ss3.4sqi.net/img/categories_v2/food/asian_",
+										"suffix": ".png"
+									},
+									"primary": true
+								}
+							],
+							"photos": {
+								"count": 0,
+								"groups": []
+							}
+						},
+						"referralId": "e-0-4cdbf4f5cea2224b336c884c-9"
+					}
+				]
+			}
+		]
+	}
+}

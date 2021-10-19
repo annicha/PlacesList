@@ -6,16 +6,20 @@
 //
 
 import UIKit
+import CoreLocation
 
 class PlacesListTBVC: UITableViewController {
+
+	var venues: [Venue] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		LocationManager.shared.startMonitoringSignificantLocationChanges { result in
+		LocationManager.shared.startMonitoringSignificantLocationChanges { [weak self] result in
+			guard let self = self else { return }
 			switch result {
 			case .success(let location):
-				print("\n🍒 User is at \(location)")
+				self.getVenuesFrom(location)
 			case .failure(let error):
 				DispatchQueue.main.async {
 					self.presentSimpleAlert(title: "Error", message: error.rawValue)
@@ -23,7 +27,28 @@ class PlacesListTBVC: UITableViewController {
 			}
 		}
     }
-
+	
+	// MARK: - Methods
+	func getVenuesFrom(_ location: CLLocation){
+		PlacesNetworkController.shared.fetchRecommendations(location: location) { [weak self] result in
+			guard let self = self else { return }
+			switch result {
+			case .success(let venues):
+				self.venues = venues
+				
+				print(venues)
+				
+//				DispatchQueue.main.async {
+//					self.tableView.reloadData()
+//				}
+			case .failure(let error):
+				guard error != .endOfResults else { return }
+				DispatchQueue.main.async {
+					self.presentSimpleAlert(title: "Error", message: error.rawValue)
+				}
+			}
+		}
+	}
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
