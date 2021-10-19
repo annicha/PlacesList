@@ -6,6 +6,7 @@
 //
 
 import CoreLocation
+import UIKit
 
 struct FoursquareConstantsKeys {
 	static let baseURL				= "https://api.foursquare.com/v2"
@@ -34,6 +35,8 @@ class PlacesNetworkController {
 	private var currentOffset 	= 0
 	private var maxOffset: Int?
 	
+	let iconImageCache = NSCache<NSString, UIImage>()
+
 	static let shared = PlacesNetworkController()
 	let baseURL = URL(string: FoursquareConstantsKeys.baseURL)
 	
@@ -127,8 +130,7 @@ class PlacesNetworkController {
 
 			guard let response = response as? HTTPURLResponse,
 				  response.statusCode == 200 else {
-					  completion(.failure(.invalidResponse))
-					  return
+					  completion(.failure(.invalidResponse)); return
 			}
 
 			guard let data = data else {
@@ -138,6 +140,63 @@ class PlacesNetworkController {
 			self.parseJSON(data, completion: completion)
 			
 		}.resume()
+	}
+	
+	func fetchIconImage(fromPath imagePath: String, suffix: String, completion: @escaping (Result<UIImage, PLNetworkError>) -> Void){
+		var customizedPath = imagePath
+		customizedPath += "_bg" // Add background color
+		customizedPath += "_64" // Image size: 32, 44, 64, and 88 are available
+		customizedPath += suffix
+		
+		let iconURL = URL(string: customizedPath)
+		guard let url = iconURL else {
+			completion(.failure(.invalidURL)); return
+		}
+		
+		let cacheKey = NSString(string: url.absoluteString)
+		if let image = iconImageCache.object(forKey: cacheKey){
+			completion(.success(image)); return
+		}
+		
+		// Queries must happen after checking cache because it contains sensitive data
+		// Example. https://ss3.4sqi.net/img/categories_v2/food/ramen_bg_64.png?client_id={{client_id}}&v={{v}}&client_secret={{client_secret}}
+		var components = URLComponents.init(url: url, resolvingAgainstBaseURL: true)
+		
+		let clientIDQuery = URLQueryItem(name: FoursquareConstantsKeys.clientIDKeyName,
+										 value: SecretKeys.clientID)
+
+		let clientSecretQuery = URLQueryItem(name: FoursquareConstantsKeys.clientSecretKeyName,
+											 value: SecretKeys.clientSecret)
+		
+		let versionQuery = URLQueryItem(name: FoursquareConstantsKeys.versionKeyName,
+										value: FoursquareConstantsKeys.version)
+
+		components?.queryItems = [clientIDQuery, versionQuery, clientSecretQuery]
+		
+		/* Create dataTask */
+		URLSession.shared.dataTask(with: url) { (data, response, error) in
+			if let error = error {
+				print("🐟 \(error.localizedDescription) in function \(#function)")
+				completion(.failure(.unableToComplete)); return
+			}
+			
+			guard let response = response as? HTTPURLResponse,
+				  response.statusCode == 200 else {
+					  completion(.failure(.invalidResponse)); return
+			}
+			
+			guard let data = data else {
+				completion(.failure(.invalidData)); return
+			}
+			
+			if let image = UIImage(data: data) {
+				self.iconImageCache.setObject(image, forKey: cacheKey)
+				completion(.success(image))
+			} else {
+				completion(.failure(.invalidData)); return
+			}
+		}.resume()
+		
 	}
 	
 	private func fetchMockJsonData(completion:@escaping (Result<[Venue], PLNetworkError>) -> Void){
@@ -153,5 +212,10 @@ class PlacesNetworkController {
 		parseJSON(data, completion: completion); return
 	}
 	
+	/// call this to reset offset related values when location changes
+	func resetOffset(){
+		self.currentOffset = 0
+		self.maxOffset = nil
+	}
 
 }
