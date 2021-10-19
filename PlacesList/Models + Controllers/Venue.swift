@@ -5,10 +5,6 @@
 //  Created by Anne on 19/10/21.
 //
 
-
-//https://developer.apple.com/swift/blog/?id=37
-
-
 struct Venue: Decodable {
 	let id: String
 	let name: String
