@@ -42,6 +42,8 @@ class PlacesNetworkController {
 	
 	private init() {}
 	
+	var venues: [Venue] = []
+	
 	// MARK: - Methods
 	private func parseJSON(_ data: Data, completion:@escaping (Result<[Venue], PLNetworkError>) -> Void) {
 		do {
@@ -67,6 +69,8 @@ class PlacesNetworkController {
 					print("\n🥞 Couldn't parse a vanue from item!")
 				}
 			}
+			
+			self.venues = venues
 			completion(.success(venues)); return
 
 		} catch {
@@ -144,8 +148,8 @@ class PlacesNetworkController {
 	
 	func fetchIconImage(fromPath imagePath: String, suffix: String, completion: @escaping (Result<UIImage, PLNetworkError>) -> Void){
 		var customizedPath = imagePath
-		customizedPath += "_bg" // Add background color
-		customizedPath += "_64" // Image size: 32, 44, 64, and 88 are available
+		//customizedPath += "bg_" 	// Add gray background color
+		customizedPath += "64" 		// Image size: 32, 44, 64, and 88 are available
 		customizedPath += suffix
 		
 		let iconURL = URL(string: customizedPath)
@@ -159,7 +163,6 @@ class PlacesNetworkController {
 		}
 		
 		// Queries must happen after checking cache because it contains sensitive data
-		// Example. https://ss3.4sqi.net/img/categories_v2/food/ramen_bg_64.png?client_id={{client_id}}&v={{v}}&client_secret={{client_secret}}
 		var components = URLComponents.init(url: url, resolvingAgainstBaseURL: true)
 		
 		let clientIDQuery = URLQueryItem(name: FoursquareConstantsKeys.clientIDKeyName,
@@ -173,12 +176,18 @@ class PlacesNetworkController {
 
 		components?.queryItems = [clientIDQuery, versionQuery, clientSecretQuery]
 		
+		// Prepare for dataTask
+		guard let endPointURL = components?.url else {
+			completion(.failure(.invalidURL)); return
+		}
+				
 		/* Create dataTask */
-		URLSession.shared.dataTask(with: url) { (data, response, error) in
+		URLSession.shared.dataTask(with: endPointURL) { (data, response, error) in
 			if let error = error {
 				print("🐟 \(error.localizedDescription) in function \(#function)")
 				completion(.failure(.unableToComplete)); return
 			}
+			
 			
 			guard let response = response as? HTTPURLResponse,
 				  response.statusCode == 200 else {
