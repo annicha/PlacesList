@@ -17,7 +17,9 @@ class PlacesListTBVC: UITableViewController {
 			case .success(let location):
 				print("\n🍒 User is at \(location)")
 			case .failure(let error):
-				self.presentSimpleAlert(title: "Error", message: error.rawValue)
+				DispatchQueue.main.async {
+					self.presentSimpleAlert(title: "Error", message: error.rawValue)
+				}
 			}
 		}
     }
