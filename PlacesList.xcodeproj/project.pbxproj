@@ -10,6 +10,9 @@
 		9710FFDE271E188900906E7D /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFDD271E188900906E7D /* SecretKeys.swift */; };
 		9710FFE0271E1DDA00906E7D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFDF271E1DDA00906E7D /* LocationManager.swift */; };
 		9710FFE2271E9AAD00906E7D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFE1271E9AAD00906E7D /* Extensions.swift */; };
+		9710FFE4271EA99A00906E7D /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFE3271EA99A00906E7D /* Venue.swift */; };
+		9710FFE7271ED12D00906E7D /* PlacesNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFE6271ED12D00906E7D /* PlacesNetworkController.swift */; };
+		9710FFEB271F062300906E7D /* ExampleResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 9710FFEA271F062300906E7D /* ExampleResponse.json */; };
 		97193CD5271DBBEA00CC1BBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97193CD4271DBBEA00CC1BBE /* AppDelegate.swift */; };
 		97193CD7271DBBEA00CC1BBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97193CD6271DBBEA00CC1BBE /* SceneDelegate.swift */; };
 		97193CDC271DBBEA00CC1BBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97193CDA271DBBEA00CC1BBE /* Main.storyboard */; };
@@ -22,6 +25,9 @@
 		9710FFDD271E188900906E7D /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		9710FFDF271E1DDA00906E7D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		9710FFE1271E9AAD00906E7D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9710FFE3271EA99A00906E7D /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		9710FFE6271ED12D00906E7D /* PlacesNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesNetworkController.swift; sourceTree = "<group>"; };
+		9710FFEA271F062300906E7D /* ExampleResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExampleResponse.json; sourceTree = "<group>"; };
 		97193CD1271DBBEA00CC1BBE /* PlacesList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97193CD4271DBBEA00CC1BBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97193CD6271DBBEA00CC1BBE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9710FFE5271ED0E100906E7D /* Models + Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9710FFE3271EA99A00906E7D /* Venue.swift */,
+				9710FFE6271ED12D00906E7D /* PlacesNetworkController.swift */,
+			);
+			path = "Models + Controllers";
+			sourceTree = "<group>";
+		};
 		97193CC8271DBBEA00CC1BBE = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +83,7 @@
 				97193CDF271DBBEE00CC1BBE /* LaunchScreen.storyboard */,
 				9710FFDF271E1DDA00906E7D /* LocationManager.swift */,
 				9710FFE1271E9AAD00906E7D /* Extensions.swift */,
+				9710FFE5271ED0E100906E7D /* Models + Controllers */,
 			);
 			path = PlacesList;
 			sourceTree = "<group>";
@@ -78,6 +94,7 @@
 				97193CD4271DBBEA00CC1BBE /* AppDelegate.swift */,
 				9710FFDD271E188900906E7D /* SecretKeys.swift */,
 				97193CD6271DBBEA00CC1BBE /* SceneDelegate.swift */,
+				9710FFEA271F062300906E7D /* ExampleResponse.json */,
 				97193CDD271DBBEE00CC1BBE /* Assets.xcassets */,
 				97193CE2271DBBEE00CC1BBE /* Info.plist */,
 			);
@@ -153,6 +170,7 @@
 				97193CE1271DBBEE00CC1BBE /* LaunchScreen.storyboard in Resources */,
 				97193CDE271DBBEE00CC1BBE /* Assets.xcassets in Resources */,
 				97193CDC271DBBEA00CC1BBE /* Main.storyboard in Resources */,
+				9710FFEB271F062300906E7D /* ExampleResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +186,8 @@
 				9710FFDE271E188900906E7D /* SecretKeys.swift in Sources */,
 				9710FFE0271E1DDA00906E7D /* LocationManager.swift in Sources */,
 				97193CD7271DBBEA00CC1BBE /* SceneDelegate.swift in Sources */,
+				9710FFE4271EA99A00906E7D /* Venue.swift in Sources */,
+				9710FFE7271ED12D00906E7D /* PlacesNetworkController.swift in Sources */,
 				97193CEB271DC67400CC1BBE /* PlacesListTBVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
