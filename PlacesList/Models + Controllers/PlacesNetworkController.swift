@@ -19,6 +19,8 @@ struct FoursquareConstantsKeys {
 	static let versionKeyName		= "v"
 	static let limitKeyName			= "limit"
 	static let offsetKeyName		= "offset"
+	static let sortByDistanceKey 	= "sortByDistance"
+	static let sortByPopularity		= "sortByPopularity"
 }
 
 /// Error message for foursquare network fetching. Use .rawValue to get error message.
@@ -109,6 +111,9 @@ class PlacesNetworkController {
 
 		let versionQuery = URLQueryItem(name: FoursquareConstantsKeys.versionKeyName,
 										value: FoursquareConstantsKeys.version)
+		
+		let sortByQuery	= URLQueryItem(name: FoursquareConstantsKeys.sortByDistanceKey,
+									   value: "1")
 
 		let locationQuery = URLQueryItem(name: FoursquareConstantsKeys.locationKeyName,
 										 value: locationString)
@@ -119,7 +124,7 @@ class PlacesNetworkController {
 		let offsetQuery = URLQueryItem(name: FoursquareConstantsKeys.offsetKeyName,
 									   value: String(currentPage * limit))
 		
-		components?.queryItems = [clientIDQuery, clientSecretQuery, versionQuery, locationQuery, limitQuery, offsetQuery]
+		components?.queryItems = [clientIDQuery, clientSecretQuery, versionQuery, sortByQuery, locationQuery, limitQuery, offsetQuery]
 
 		// Prepare for dataTask
 		guard let endPointURL = components?.url else {
