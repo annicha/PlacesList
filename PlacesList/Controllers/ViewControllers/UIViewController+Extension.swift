@@ -35,8 +35,3 @@ extension UIViewController {
 	
 
 }
-
-extension UIColor {
-	/// Purple from mock up, system purple in dark mode
-	static let placeIconColor = UIColor(named: "IconColor")!
-}

@@ -54,7 +54,6 @@ class PlacesNetworkController {
 				  let totalResults 	= response["totalResults"] as? Int,
 				  let groups		= response["groups"] as? [[String: Any]],
 				  let items			= groups[0]["items"] as? [[String: Any]] else {
-					   print("\n❌ Couldn't get top level result ")
 					   completion(.failure(.invalidData)); return
 			}
 			
@@ -68,8 +67,6 @@ class PlacesNetworkController {
 			for item in items {
 				if let venue = Venue(item) {
 					venues += [venue]
-				} else {
-					print("\n🥞 Couldn't parse a vanue from item!")
 				}
 			}
 			
@@ -216,7 +213,6 @@ class PlacesNetworkController {
 	
 	private func fetchMockJsonData(completion:@escaping (Result<[Venue], PLNetworkError>) -> Void){
 		guard let exampleFilePath = Bundle.main.path(forResource: "ExampleResponse", ofType: "json") else {
-			print("\n🧪 Invalid file path")
 			completion(.failure(.invalidURL)); return
 		}
 		
