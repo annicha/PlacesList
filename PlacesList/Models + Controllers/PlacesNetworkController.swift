@@ -90,7 +90,7 @@ class PlacesNetworkController {
 		guard !maxOffsetReached else { completion(.failure(.endOfResults)); return }
 		
 		/* Try with mock json, comment out lines below this to test mock data */
-		// fetchMockJsonData(completion: completion); return
+		//fetchMockJsonData(completion: completion); return
 		
 		let exploreURL = baseURL?.appendingPathComponent("venues")
 			.appendingPathComponent("explore")

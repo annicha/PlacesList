@@ -23,6 +23,7 @@ class PlacesListTBVC: UITableViewController {
 	
 	// MARK: - Methods
 	private func startGettingLocation(){
+		presentLoadingScreen()
 		LocationManager.shared.startMonitoringSignificantLocationChanges { [weak self] result in
 			guard let self = self else { return }
 			switch result {

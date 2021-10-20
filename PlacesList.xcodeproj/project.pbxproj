@@ -15,6 +15,7 @@
 		9710FFEB271F062300906E7D /* ExampleResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 9710FFEA271F062300906E7D /* ExampleResponse.json */; };
 		9710FFEF271F5E7E00906E7D /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFEE271F5E7E00906E7D /* PlaceCell.swift */; };
 		9710FFF0271FBA0500906E7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97193CDD271DBBEE00CC1BBE /* Assets.xcassets */; };
+		9710FFF2271FBD7200906E7D /* SpinnerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFF1271FBD7200906E7D /* SpinnerVC.swift */; };
 		97193CD5271DBBEA00CC1BBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97193CD4271DBBEA00CC1BBE /* AppDelegate.swift */; };
 		97193CD7271DBBEA00CC1BBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97193CD6271DBBEA00CC1BBE /* SceneDelegate.swift */; };
 		97193CDC271DBBEA00CC1BBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97193CDA271DBBEA00CC1BBE /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		9710FFE6271ED12D00906E7D /* PlacesNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesNetworkController.swift; sourceTree = "<group>"; };
 		9710FFEA271F062300906E7D /* ExampleResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExampleResponse.json; sourceTree = "<group>"; };
 		9710FFEE271F5E7E00906E7D /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
+		9710FFF1271FBD7200906E7D /* SpinnerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerVC.swift; sourceTree = "<group>"; };
 		97193CD1271DBBEA00CC1BBE /* PlacesList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97193CD4271DBBEA00CC1BBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97193CD6271DBBEA00CC1BBE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				97193CDA271DBBEA00CC1BBE /* Main.storyboard */,
 				97193CDF271DBBEE00CC1BBE /* LaunchScreen.storyboard */,
 				9710FFDF271E1DDA00906E7D /* LocationManager.swift */,
+				9710FFF1271FBD7200906E7D /* SpinnerVC.swift */,
 				9710FFEE271F5E7E00906E7D /* PlaceCell.swift */,
 				9710FFE1271E9AAD00906E7D /* Extensions.swift */,
 				9710FFE5271ED0E100906E7D /* Models + Controllers */,
@@ -186,6 +189,7 @@
 			files = (
 				97193CD5271DBBEA00CC1BBE /* AppDelegate.swift in Sources */,
 				9710FFE2271E9AAD00906E7D /* Extensions.swift in Sources */,
+				9710FFF2271FBD7200906E7D /* SpinnerVC.swift in Sources */,
 				9710FFDE271E188900906E7D /* SecretKeys.swift in Sources */,
 				9710FFE0271E1DDA00906E7D /* LocationManager.swift in Sources */,
 				97193CD7271DBBEA00CC1BBE /* SceneDelegate.swift in Sources */,

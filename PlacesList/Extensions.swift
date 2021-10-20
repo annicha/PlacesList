@@ -15,6 +15,25 @@ extension UIViewController {
 		alertController.addAction(cancelAction)
 		self.present(alertController, animated: true, completion: nil)
 	}
+	
+	/// Present loading screen
+	///  https://www.hackingwithswift.com/example-code/uikit/how-to-use-uiactivityindicatorview-to-show-a-spinner-when-work-is-happening
+	func presentLoadingScreen(){
+		let child = SpinnerViewController()
+
+		addChild(child)
+		child.view.frame = view.frame
+		view.addSubview(child.view)
+		child.didMove(toParent: self)
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+			child.willMove(toParent: nil)
+			child.view.removeFromSuperview()
+			child.removeFromParent()
+		}
+	}
+	
+
 }
 
 extension UIColor {
