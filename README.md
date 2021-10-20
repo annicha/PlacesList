@@ -56,8 +56,8 @@ struct SecretKeys {
 -  json object = swift dictionary `[String:Any]`
 -  Array of json object = swift array of dictionary `[[String:Any]`
 -  Venue is a json object, we need 2 type of things from venue
-		1. properties from location object
-		2. properties in icon, which is inside categories of type `[[String:Any]]` we only want to get the one with primary value = true
+	- 1. properties from location object
+	- 2. properties in icon, which is inside categories of type `[[String:Any]]` we only want to get the one with primary value = true
 
 
 **Drafts**
