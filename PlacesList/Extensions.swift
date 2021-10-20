@@ -16,3 +16,8 @@ extension UIViewController {
 		self.present(alertController, animated: true, completion: nil)
 	}
 }
+
+extension UIColor {
+	/// Purple from mock up, system purple in dark mode
+	static let placeIconColor = UIColor(named: "IconColor")!
+}

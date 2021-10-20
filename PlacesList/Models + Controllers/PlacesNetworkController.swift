@@ -6,6 +6,7 @@
 //
 
 import CoreLocation
+import UIKit
 
 struct FoursquareConstantsKeys {
 	static let baseURL				= "https://api.foursquare.com/v2"
@@ -31,14 +32,16 @@ enum PLNetworkError: String, Error {
 
 class PlacesNetworkController {
 	private var limit			= 10
-	private var currentOffset 	= 0
-	private var maxOffset: Int?
+	private var currentPage 	= 0
+	private var maxPage: Int?
 	
+	let iconImageCache = NSCache<NSString, UIImage>()
+
 	static let shared = PlacesNetworkController()
 	let baseURL = URL(string: FoursquareConstantsKeys.baseURL)
 	
 	private init() {}
-	
+		
 	// MARK: - Methods
 	private func parseJSON(_ data: Data, completion:@escaping (Result<[Venue], PLNetworkError>) -> Void) {
 		do {
@@ -53,8 +56,11 @@ class PlacesNetworkController {
 					   completion(.failure(.invalidData)); return
 			}
 			
-			self.maxOffset 		= totalResults / self.limit
-			self.currentOffset += 1
+			self.maxPage 	= totalResults / self.limit
+			if maxPage! > 3 {
+				self.maxPage = 3 // limit results to save api calls
+			}
+			self.currentPage   += 1
 			
 			var venues: [Venue] = []
 			for item in items {
@@ -64,6 +70,7 @@ class PlacesNetworkController {
 					print("\n🥞 Couldn't parse a vanue from item!")
 				}
 			}
+			
 			completion(.success(venues)); return
 
 		} catch {
@@ -74,8 +81,8 @@ class PlacesNetworkController {
 	
 	func fetchRecommendations(location: CLLocation, completion:@escaping (Result<[Venue], PLNetworkError>) -> Void){
 		var maxOffsetReached: Bool = false
-		if let maxOffset = maxOffset {
-			maxOffsetReached = maxOffset >= currentOffset
+		if let maxPage = maxPage {
+			maxOffsetReached = currentPage > maxPage
 		}
 		
 		guard !maxOffsetReached else { completion(.failure(.endOfResults)); return }
@@ -110,7 +117,8 @@ class PlacesNetworkController {
 									  value: String(limit))
 
 		let offsetQuery = URLQueryItem(name: FoursquareConstantsKeys.offsetKeyName,
-									   value: String(currentOffset))
+									   value: String(currentPage * limit))
+		
 		components?.queryItems = [clientIDQuery, clientSecretQuery, versionQuery, locationQuery, limitQuery, offsetQuery]
 
 		// Prepare for dataTask
@@ -127,8 +135,7 @@ class PlacesNetworkController {
 
 			guard let response = response as? HTTPURLResponse,
 				  response.statusCode == 200 else {
-					  completion(.failure(.invalidResponse))
-					  return
+					  completion(.failure(.invalidResponse)); return
 			}
 
 			guard let data = data else {
@@ -138,6 +145,68 @@ class PlacesNetworkController {
 			self.parseJSON(data, completion: completion)
 			
 		}.resume()
+	}
+	
+	func fetchIconImage(fromPath imagePath: String, suffix: String, completion: @escaping (Result<UIImage, PLNetworkError>) -> Void){
+		var customizedPath = imagePath
+		//customizedPath += "bg_" 	// Add gray background color
+		customizedPath += "64" 		// Image size: 32, 44, 64, and 88 are available
+		customizedPath += suffix
+		
+		let iconURL = URL(string: customizedPath)
+		guard let url = iconURL else {
+			completion(.failure(.invalidURL)); return
+		}
+		
+		let cacheKey = NSString(string: url.absoluteString)
+		if let image = iconImageCache.object(forKey: cacheKey){
+			completion(.success(image)); return
+		}
+		
+		// Queries must happen after checking cache because it contains sensitive data
+		var components = URLComponents.init(url: url, resolvingAgainstBaseURL: true)
+		
+		let clientIDQuery = URLQueryItem(name: FoursquareConstantsKeys.clientIDKeyName,
+										 value: SecretKeys.clientID)
+
+		let clientSecretQuery = URLQueryItem(name: FoursquareConstantsKeys.clientSecretKeyName,
+											 value: SecretKeys.clientSecret)
+		
+		let versionQuery = URLQueryItem(name: FoursquareConstantsKeys.versionKeyName,
+										value: FoursquareConstantsKeys.version)
+
+		components?.queryItems = [clientIDQuery, versionQuery, clientSecretQuery]
+		
+		// Prepare for dataTask
+		guard let endPointURL = components?.url else {
+			completion(.failure(.invalidURL)); return
+		}
+				
+		/* Create dataTask */
+		URLSession.shared.dataTask(with: endPointURL) { (data, response, error) in
+			if let error = error {
+				print("🐟 \(error.localizedDescription) in function \(#function)")
+				completion(.failure(.unableToComplete)); return
+			}
+			
+			
+			guard let response = response as? HTTPURLResponse,
+				  response.statusCode == 200 else {
+					  completion(.failure(.invalidResponse)); return
+			}
+			
+			guard let data = data else {
+				completion(.failure(.invalidData)); return
+			}
+			
+			if let image = UIImage(data: data) {
+				self.iconImageCache.setObject(image, forKey: cacheKey)
+				completion(.success(image))
+			} else {
+				completion(.failure(.invalidData)); return
+			}
+		}.resume()
+		
 	}
 	
 	private func fetchMockJsonData(completion:@escaping (Result<[Venue], PLNetworkError>) -> Void){
@@ -153,5 +222,10 @@ class PlacesNetworkController {
 		parseJSON(data, completion: completion); return
 	}
 	
+	/// call this to reset offset related values when location changes
+	func resetOffset(){
+		self.currentPage = 0
+		self.maxPage = nil
+	}
 
 }

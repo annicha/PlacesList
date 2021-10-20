@@ -2,10 +2,15 @@
 - [x] try out foursquareAPI on Postman
 - [x] setup venue json object
 - [x] implement fetching data
-- [ ] implement icon image caching
-- [ ] make a draft of view constraints
-- [ ] create storyboard
-- [ ] populate results
+- [x] implement icon image caching
+- [x] make a draft of view constraints
+- [x] create storyboard
+- [x] populate results
+- [x] add a navigation bar please!!
+- [x] fetch next results
+- [ ] add something to launchscreen
+- [ ] add a loading alert when app is fetching current location
+- [ ] make app icon
 - [ ] clean up
 
 ### Resources

@@ -9,111 +9,107 @@ import UIKit
 import CoreLocation
 
 class PlacesListTBVC: UITableViewController {
-
+	
+	@IBOutlet weak var endOfRowFooterView: UIView!
+	
 	var venues: [Venue] = []
-
+	var location: CLLocation?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		endOfRowFooterView.isHidden = true
+		startGettingLocation()
+    }
+	
+	// MARK: - Methods
+	private func startGettingLocation(){
 		LocationManager.shared.startMonitoringSignificantLocationChanges { [weak self] result in
 			guard let self = self else { return }
 			switch result {
 			case .success(let location):
-				self.getVenuesFrom(location)
+				self.location = location
+				self.getVenues()
 			case .failure(let error):
-				DispatchQueue.main.async {
-					self.presentSimpleAlert(title: "Error", message: error.rawValue)
-				}
-			}
-		}
-    }
-	
-	// MARK: - Methods
-	func getVenuesFrom(_ location: CLLocation){
-		PlacesNetworkController.shared.fetchRecommendations(location: location) { [weak self] result in
-			guard let self = self else { return }
-			switch result {
-			case .success(let venues):
-				self.venues = venues
-				
-				print(venues)
-				
-//				DispatchQueue.main.async {
-//					self.tableView.reloadData()
-//				}
-			case .failure(let error):
-				guard error != .endOfResults else { return }
 				DispatchQueue.main.async {
 					self.presentSimpleAlert(title: "Error", message: error.rawValue)
 				}
 			}
 		}
 	}
-    // MARK: - Table view data source
+	
+	
+	private func getVenues(){
+		guard let location = location else { return }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+		PlacesNetworkController.shared.fetchRecommendations(location: location) { [weak self] result in
+			guard let self = self else { print("\n🍰 No self!"); return }
+			switch result {
+			case .success(let venues):
+				self.venues += venues
+				DispatchQueue.main.async {
+					self.tableView.reloadData()
+				}
+			case .failure(let error):
+				DispatchQueue.main.async {
+					guard error != .endOfResults else {
+						self.endOfRowFooterView.isHidden = false; return
+					}
+					
+					self.presentSimpleAlert(title: "Error", message: error.rawValue)
+				}
+			}
+		}
+	}
+	
+	
+	func getIconImage(fromPath path: String, suffix: String, completion: @escaping(UIImage?) -> Void){
+		PlacesNetworkController.shared.fetchIconImage(fromPath: path, suffix: suffix) { result in
+			switch result {
+			case .success(let image): completion(image)
+			case .failure(_): completion(nil)
+			}
+		}
+	}
+	
+    // MARK: - Table view methods
+	
+	override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+		return self.tableView(tableView, heightForRowAt: indexPath)
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return UITableView.automaticDimension
+	}
+	
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+		return venues.count
     }
+	
+	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		guard indexPath.row == venues.count - 1 else { return }
+		getVenues()
+	}
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell", for: indexPath) as? PlaceCell else { return UITableViewCell() }
 
-        // Configure the cell...
+		let venue = venues[indexPath.row]
+
+		guard let path = venue.iconPath,
+			  let suffix = venue.iconSuffix else {
+			cell.setData(venue: venue)
+			return cell
+		}
+		
+		getIconImage(fromPath: path, suffix: suffix) { image in
+			DispatchQueue.main.async {
+				cell.setData(venue: venue, image: image)
+			}
+		}
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+	
+	
 
 }
