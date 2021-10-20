@@ -20,7 +20,7 @@ class SpinnerViewController: UIViewController {
 
 		NSLayoutConstraint.activate ([
 			spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+			spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100)
 		])
 	}
 }
