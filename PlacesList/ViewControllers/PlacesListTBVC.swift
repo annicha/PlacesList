@@ -10,36 +10,51 @@ import CoreLocation
 
 class PlacesListTBVC: UITableViewController {
 	
-	var venues = PlacesNetworkController.shared.venues
-
+	@IBOutlet weak var endOfRowFooterView: UIView!
+	
+	var venues: [Venue] = []
+	var location: CLLocation?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
+		endOfRowFooterView.isHidden = true
+		startGettingLocation()
+    }
+	
+	// MARK: - Methods
+	private func startGettingLocation(){
 		LocationManager.shared.startMonitoringSignificantLocationChanges { [weak self] result in
 			guard let self = self else { return }
 			switch result {
 			case .success(let location):
-				self.getVenuesFrom(location)
+				self.location = location
+				self.getVenues()
 			case .failure(let error):
 				DispatchQueue.main.async {
 					self.presentSimpleAlert(title: "Error", message: error.rawValue)
 				}
 			}
 		}
-    }
+	}
 	
-	// MARK: - Methods
-	func getVenuesFrom(_ location: CLLocation){
+	
+	private func getVenues(){
+		guard let location = location else { return }
+
 		PlacesNetworkController.shared.fetchRecommendations(location: location) { [weak self] result in
-			guard let self = self else { return }
+			guard let self = self else { print("\n🍰 No self!"); return }
 			switch result {
 			case .success(let venues):
-				self.venues = venues
+				self.venues += venues
 				DispatchQueue.main.async {
 					self.tableView.reloadData()
 				}
 			case .failure(let error):
-				guard error != .endOfResults else { return }
 				DispatchQueue.main.async {
+					guard error != .endOfResults else {
+						self.endOfRowFooterView.isHidden = false; return
+					}
+					
 					self.presentSimpleAlert(title: "Error", message: error.rawValue)
 				}
 			}
@@ -69,6 +84,11 @@ class PlacesListTBVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return venues.count
     }
+	
+	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		guard indexPath.row == venues.count - 1 else { return }
+		getVenues()
+	}
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: "placeCell", for: indexPath) as? PlaceCell else { return UITableViewCell() }

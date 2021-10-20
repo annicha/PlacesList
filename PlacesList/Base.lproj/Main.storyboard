@@ -17,26 +17,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="4WF-mr-t7d">
+                            <rect key="frame" x="0.0" y="224" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End of recommendation 🏝" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91F-4K-6hr">
+                                    <rect key="frame" x="102.5" y="12" width="209.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="91F-4K-6hr" firstAttribute="centerX" secondItem="4WF-mr-t7d" secondAttribute="centerXWithinMargins" id="1P4-4N-mDb"/>
+                                <constraint firstItem="91F-4K-6hr" firstAttribute="centerY" secondItem="4WF-mr-t7d" secondAttribute="centerYWithinMargins" id="mbZ-4h-fyW"/>
+                            </constraints>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="placeCell" rowHeight="150" id="Yag-5p-iNt" customClass="PlaceCell" customModule="PlacesList" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="150"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="placeCell" rowHeight="157" id="Yag-5p-iNt" customClass="PlaceCell" customModule="PlacesList" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="157"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yag-5p-iNt" id="vGP-k7-N0s">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="157"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWy-pu-yNE">
-                                            <rect key="frame" x="14" y="40" width="74.5" height="75"/>
+                                            <rect key="frame" x="14" y="43.5" width="74.5" height="75"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="hWy-pu-yNE" secondAttribute="height" multiplier="1:1" id="zpi-EK-yIu"/>
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="jCt-Jb-DTo">
-                                            <rect key="frame" x="20" y="10" width="374" height="135"/>
+                                            <rect key="frame" x="20" y="10" width="374" height="142"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="h6w-OX-bfN">
-                                                    <rect key="frame" x="0.0" y="36.5" width="62" height="62"/>
+                                                    <rect key="frame" x="0.0" y="40" width="62" height="62"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vE1-Sq-P4a">
                                                             <rect key="frame" x="0.0" y="2.5" width="62" height="57"/>
@@ -49,7 +66,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="top" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="GRx-Nd-wa9" userLabel="Labels Stack">
-                                                    <rect key="frame" x="88" y="25.5" width="286" height="84.5"/>
+                                                    <rect key="frame" x="88" y="29" width="286" height="84.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="(name)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vx6-bn-kIz">
                                                             <rect key="frame" x="0.0" y="0.0" width="286" height="17"/>
@@ -106,6 +123,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Explore places" id="Xhw-dS-Ost"/>
+                    <connections>
+                        <outlet property="endOfRowFooterView" destination="4WF-mr-t7d" id="9gd-op-LCP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Isa-GJ-Wof" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

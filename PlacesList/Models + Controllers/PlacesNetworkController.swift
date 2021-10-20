@@ -32,8 +32,8 @@ enum PLNetworkError: String, Error {
 
 class PlacesNetworkController {
 	private var limit			= 10
-	private var currentOffset 	= 0
-	private var maxOffset: Int?
+	private var currentPage 	= 0
+	private var maxPage: Int?
 	
 	let iconImageCache = NSCache<NSString, UIImage>()
 
@@ -41,9 +41,7 @@ class PlacesNetworkController {
 	let baseURL = URL(string: FoursquareConstantsKeys.baseURL)
 	
 	private init() {}
-	
-	var venues: [Venue] = []
-	
+		
 	// MARK: - Methods
 	private func parseJSON(_ data: Data, completion:@escaping (Result<[Venue], PLNetworkError>) -> Void) {
 		do {
@@ -58,8 +56,11 @@ class PlacesNetworkController {
 					   completion(.failure(.invalidData)); return
 			}
 			
-			self.maxOffset 		= totalResults / self.limit
-			self.currentOffset += 1
+			self.maxPage 	= totalResults / self.limit
+			if maxPage! > 3 {
+				self.maxPage = 3 // limit results to save api calls
+			}
+			self.currentPage   += 1
 			
 			var venues: [Venue] = []
 			for item in items {
@@ -70,7 +71,6 @@ class PlacesNetworkController {
 				}
 			}
 			
-			self.venues = venues
 			completion(.success(venues)); return
 
 		} catch {
@@ -81,8 +81,8 @@ class PlacesNetworkController {
 	
 	func fetchRecommendations(location: CLLocation, completion:@escaping (Result<[Venue], PLNetworkError>) -> Void){
 		var maxOffsetReached: Bool = false
-		if let maxOffset = maxOffset {
-			maxOffsetReached = maxOffset >= currentOffset
+		if let maxPage = maxPage {
+			maxOffsetReached = currentPage > maxPage
 		}
 		
 		guard !maxOffsetReached else { completion(.failure(.endOfResults)); return }
@@ -117,7 +117,8 @@ class PlacesNetworkController {
 									  value: String(limit))
 
 		let offsetQuery = URLQueryItem(name: FoursquareConstantsKeys.offsetKeyName,
-									   value: String(currentOffset))
+									   value: String(currentPage * limit))
+		
 		components?.queryItems = [clientIDQuery, clientSecretQuery, versionQuery, locationQuery, limitQuery, offsetQuery]
 
 		// Prepare for dataTask
@@ -223,8 +224,8 @@ class PlacesNetworkController {
 	
 	/// call this to reset offset related values when location changes
 	func resetOffset(){
-		self.currentOffset = 0
-		self.maxOffset = nil
+		self.currentPage = 0
+		self.maxPage = nil
 	}
 
 }
