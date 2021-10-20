@@ -6,9 +6,9 @@
 - [x] make a draft of view constraints
 - [x] create storyboard
 - [x] populate results
-- [ ] add a navigation bar please!!
-- [ ] fetch next results
-- [ ] add somthing to launchscreen
+- [x] add a navigation bar please!!
+- [x] fetch next results
+- [ ] add something to launchscreen
 - [ ] add a loading alert when app is fetching current location
 - [ ] make app icon
 - [ ] clean up
