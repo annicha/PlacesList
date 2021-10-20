@@ -1,3 +1,20 @@
+## Project setup
+- After downloading or cloning, please navigate to Resources folder. There should be a *red* file called SecretKeys
+- At that position, create new file called `SecretKeys.swift`
+- In that file, add this code below
+- Then replace the ids with your own API keys from FourSquare
+
+```swift
+struct SecretKeys {
+	static let clientID		=   "You client ID"
+	static let clientSecret		=.  "You client secret"
+}
+
+```
+
+
+--- 
+
 ### Todo
 - [x] try out foursquareAPI on Postman
 - [x] setup venue json object
@@ -25,27 +42,29 @@
 <table>
 <tr>
 	<td>
-		<img src="topshot.png" alt="Top Dictionary" width="250px"><br>
-		json object = swift dictionary `[String:Any]`
+		<img src="topshot.png" alt="Top Dictionary" width="300px"><br>
 	</td>
 	<td>
-		<img src="itemsshot.png" alt="Items Dictionary" width="250px"><br>
-		Array of json object = swift array of dictionary `[[String:Any]`
+		<img src="itemsshot.png" alt="Items Dictionary" width="300px"><br>
 	</td>
 	<td>
-		<img src="venueshot.png" alt="Venue Dictionary" width="250px"><br>
-		Venue is a json object, we need 2 type of things from venue
-		1. properties from location object
-		2. properties in icon, which is inside categories of type `[[String:Any]]` we only want to get the one with primary value = true
+		<img src="venueshot.png" alt="Venue Dictionary" width="300px"><br>
 	</td>
 <tr>
 </table>
+
+-  json object = swift dictionary `[String:Any]`
+-  Array of json object = swift array of dictionary `[[String:Any]`
+-  Venue is a json object, we need 2 type of things from venue
+		1. properties from location object
+		2. properties in icon, which is inside categories of type `[[String:Any]]` we only want to get the one with primary value = true
+
 
 **Drafts**
 <table>
 <tr>
 	<td>
-		<img src="draft.jpeg" alt="draft" width="350px">
+		<img src="draft.jpg" alt="draft" width="350px">
 	</td>
 	<td>
 		<img src="draft2.jpeg" alt="draft2" width="350px">
