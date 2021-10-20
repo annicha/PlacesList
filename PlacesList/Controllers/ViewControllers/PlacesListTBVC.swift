@@ -87,7 +87,8 @@ class PlacesListTBVC: UITableViewController {
     }
 	
 	override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-		guard indexPath.row == venues.count - 1 else { return }
+		guard venues.count > 4,
+			  indexPath.row == venues.count - 4 else { return }
 		getVenues()
 	}
 
