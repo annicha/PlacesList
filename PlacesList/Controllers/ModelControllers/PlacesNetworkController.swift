@@ -19,6 +19,8 @@ struct FoursquareConstantsKeys {
 	static let versionKeyName		= "v"
 	static let limitKeyName			= "limit"
 	static let offsetKeyName		= "offset"
+	static let sortByDistanceKey 	= "sortByDistance"
+	static let sortByPopularity		= "sortByPopularity"
 }
 
 /// Error message for foursquare network fetching. Use .rawValue to get error message.
@@ -52,7 +54,6 @@ class PlacesNetworkController {
 				  let totalResults 	= response["totalResults"] as? Int,
 				  let groups		= response["groups"] as? [[String: Any]],
 				  let items			= groups[0]["items"] as? [[String: Any]] else {
-					   print("\n❌ Couldn't get top level result ")
 					   completion(.failure(.invalidData)); return
 			}
 			
@@ -66,8 +67,6 @@ class PlacesNetworkController {
 			for item in items {
 				if let venue = Venue(item) {
 					venues += [venue]
-				} else {
-					print("\n🥞 Couldn't parse a vanue from item!")
 				}
 			}
 			
@@ -88,7 +87,7 @@ class PlacesNetworkController {
 		guard !maxOffsetReached else { completion(.failure(.endOfResults)); return }
 		
 		/* Try with mock json, comment out lines below this to test mock data */
-		// fetchMockJsonData(completion: completion); return
+		//fetchMockJsonData(completion: completion); return
 		
 		let exploreURL = baseURL?.appendingPathComponent("venues")
 			.appendingPathComponent("explore")
@@ -109,6 +108,9 @@ class PlacesNetworkController {
 
 		let versionQuery = URLQueryItem(name: FoursquareConstantsKeys.versionKeyName,
 										value: FoursquareConstantsKeys.version)
+		
+		let sortByQuery	= URLQueryItem(name: FoursquareConstantsKeys.sortByDistanceKey,
+									   value: "1")
 
 		let locationQuery = URLQueryItem(name: FoursquareConstantsKeys.locationKeyName,
 										 value: locationString)
@@ -119,7 +121,7 @@ class PlacesNetworkController {
 		let offsetQuery = URLQueryItem(name: FoursquareConstantsKeys.offsetKeyName,
 									   value: String(currentPage * limit))
 		
-		components?.queryItems = [clientIDQuery, clientSecretQuery, versionQuery, locationQuery, limitQuery, offsetQuery]
+		components?.queryItems = [clientIDQuery, clientSecretQuery, versionQuery, sortByQuery, locationQuery, limitQuery, offsetQuery]
 
 		// Prepare for dataTask
 		guard let endPointURL = components?.url else {
@@ -211,7 +213,6 @@ class PlacesNetworkController {
 	
 	private func fetchMockJsonData(completion:@escaping (Result<[Venue], PLNetworkError>) -> Void){
 		guard let exampleFilePath = Bundle.main.path(forResource: "ExampleResponse", ofType: "json") else {
-			print("\n🧪 Invalid file path")
 			completion(.failure(.invalidURL)); return
 		}
 		

@@ -23,6 +23,7 @@ class PlacesListTBVC: UITableViewController {
 	
 	// MARK: - Methods
 	private func startGettingLocation(){
+		presentLoadingScreen()
 		LocationManager.shared.startMonitoringSignificantLocationChanges { [weak self] result in
 			guard let self = self else { return }
 			switch result {
@@ -42,7 +43,7 @@ class PlacesListTBVC: UITableViewController {
 		guard let location = location else { return }
 
 		PlacesNetworkController.shared.fetchRecommendations(location: location) { [weak self] result in
-			guard let self = self else { print("\n🍰 No self!"); return }
+			guard let self = self else { return }
 			switch result {
 			case .success(let venues):
 				self.venues += venues

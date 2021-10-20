@@ -9,15 +9,17 @@
 /* Begin PBXBuildFile section */
 		9710FFDE271E188900906E7D /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFDD271E188900906E7D /* SecretKeys.swift */; };
 		9710FFE0271E1DDA00906E7D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFDF271E1DDA00906E7D /* LocationManager.swift */; };
-		9710FFE2271E9AAD00906E7D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFE1271E9AAD00906E7D /* Extensions.swift */; };
+		9710FFE2271E9AAD00906E7D /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFE1271E9AAD00906E7D /* UIViewController+Extension.swift */; };
 		9710FFE4271EA99A00906E7D /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFE3271EA99A00906E7D /* Venue.swift */; };
 		9710FFE7271ED12D00906E7D /* PlacesNetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFE6271ED12D00906E7D /* PlacesNetworkController.swift */; };
 		9710FFEB271F062300906E7D /* ExampleResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 9710FFEA271F062300906E7D /* ExampleResponse.json */; };
 		9710FFEF271F5E7E00906E7D /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFEE271F5E7E00906E7D /* PlaceCell.swift */; };
+		9710FFF0271FBA0500906E7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97193CDD271DBBEE00CC1BBE /* Assets.xcassets */; };
+		9710FFF2271FBD7200906E7D /* SpinnerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFF1271FBD7200906E7D /* SpinnerVC.swift */; };
+		9710FFF4271FC53D00906E7D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9710FFF3271FC53D00906E7D /* UIColor+Extension.swift */; };
 		97193CD5271DBBEA00CC1BBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97193CD4271DBBEA00CC1BBE /* AppDelegate.swift */; };
 		97193CD7271DBBEA00CC1BBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97193CD6271DBBEA00CC1BBE /* SceneDelegate.swift */; };
 		97193CDC271DBBEA00CC1BBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97193CDA271DBBEA00CC1BBE /* Main.storyboard */; };
-		97193CDE271DBBEE00CC1BBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97193CDD271DBBEE00CC1BBE /* Assets.xcassets */; };
 		97193CE1271DBBEE00CC1BBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97193CDF271DBBEE00CC1BBE /* LaunchScreen.storyboard */; };
 		97193CEB271DC67400CC1BBE /* PlacesListTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97193CEA271DC67400CC1BBE /* PlacesListTBVC.swift */; };
 /* End PBXBuildFile section */
@@ -25,16 +27,18 @@
 /* Begin PBXFileReference section */
 		9710FFDD271E188900906E7D /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		9710FFDF271E1DDA00906E7D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		9710FFE1271E9AAD00906E7D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9710FFE1271E9AAD00906E7D /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		9710FFE3271EA99A00906E7D /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		9710FFE6271ED12D00906E7D /* PlacesNetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesNetworkController.swift; sourceTree = "<group>"; };
 		9710FFEA271F062300906E7D /* ExampleResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExampleResponse.json; sourceTree = "<group>"; };
 		9710FFEE271F5E7E00906E7D /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
+		9710FFF1271FBD7200906E7D /* SpinnerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerVC.swift; sourceTree = "<group>"; };
+		9710FFF3271FC53D00906E7D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		97193CD1271DBBEA00CC1BBE /* PlacesList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97193CD4271DBBEA00CC1BBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97193CD6271DBBEA00CC1BBE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		97193CDB271DBBEA00CC1BBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		97193CDD271DBBEE00CC1BBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		97193CDD271DBBEE00CC1BBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = PlacesList/Resources/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		97193CE0271DBBEE00CC1BBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97193CE2271DBBEE00CC1BBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97193CEA271DC67400CC1BBE /* PlacesListTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesListTBVC.swift; sourceTree = "<group>"; };
@@ -51,13 +55,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9710FFE5271ED0E100906E7D /* Models + Controllers */ = {
+		9710FFE5271ED0E100906E7D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				9710FFE3271EA99A00906E7D /* Venue.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9710FFF5271FC54E00906E7D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9710FFF3271FC53D00906E7D /* UIColor+Extension.swift */,
+				9710FFEE271F5E7E00906E7D /* PlaceCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9710FFF6271FC5BE00906E7D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				97193CE9271DC62700CC1BBE /* ViewControllers */,
+				9710FFF7271FC5CC00906E7D /* ModelControllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9710FFF7271FC5CC00906E7D /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9710FFDF271E1DDA00906E7D /* LocationManager.swift */,
 				9710FFE6271ED12D00906E7D /* PlacesNetworkController.swift */,
 			);
-			path = "Models + Controllers";
+			path = ModelControllers;
 			sourceTree = "<group>";
 		};
 		97193CC8271DBBEA00CC1BBE = {
@@ -79,14 +109,12 @@
 		97193CD3271DBBEA00CC1BBE /* PlacesList */ = {
 			isa = PBXGroup;
 			children = (
-				97193CE8271DBC5900CC1BBE /* Resources */,
-				97193CE9271DC62700CC1BBE /* ViewControllers */,
 				97193CDA271DBBEA00CC1BBE /* Main.storyboard */,
 				97193CDF271DBBEE00CC1BBE /* LaunchScreen.storyboard */,
-				9710FFDF271E1DDA00906E7D /* LocationManager.swift */,
-				9710FFEE271F5E7E00906E7D /* PlaceCell.swift */,
-				9710FFE1271E9AAD00906E7D /* Extensions.swift */,
-				9710FFE5271ED0E100906E7D /* Models + Controllers */,
+				97193CE8271DBC5900CC1BBE /* Resources */,
+				9710FFE5271ED0E100906E7D /* Models */,
+				9710FFF5271FC54E00906E7D /* Views */,
+				9710FFF6271FC5BE00906E7D /* Controllers */,
 			);
 			path = PlacesList;
 			sourceTree = "<group>";
@@ -108,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				97193CEA271DC67400CC1BBE /* PlacesListTBVC.swift */,
+				9710FFF1271FBD7200906E7D /* SpinnerVC.swift */,
+				9710FFE1271E9AAD00906E7D /* UIViewController+Extension.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -171,8 +201,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				97193CE1271DBBEE00CC1BBE /* LaunchScreen.storyboard in Resources */,
-				97193CDE271DBBEE00CC1BBE /* Assets.xcassets in Resources */,
 				97193CDC271DBBEA00CC1BBE /* Main.storyboard in Resources */,
+				9710FFF0271FBA0500906E7D /* Assets.xcassets in Resources */,
 				9710FFEB271F062300906E7D /* ExampleResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,7 +215,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				97193CD5271DBBEA00CC1BBE /* AppDelegate.swift in Sources */,
-				9710FFE2271E9AAD00906E7D /* Extensions.swift in Sources */,
+				9710FFE2271E9AAD00906E7D /* UIViewController+Extension.swift in Sources */,
+				9710FFF2271FBD7200906E7D /* SpinnerVC.swift in Sources */,
+				9710FFF4271FC53D00906E7D /* UIColor+Extension.swift in Sources */,
 				9710FFDE271E188900906E7D /* SecretKeys.swift in Sources */,
 				9710FFE0271E1DDA00906E7D /* LocationManager.swift in Sources */,
 				97193CD7271DBBEA00CC1BBE /* SceneDelegate.swift in Sources */,
@@ -339,6 +371,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 67729QDLYV;
@@ -369,6 +402,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 67729QDLYV;
